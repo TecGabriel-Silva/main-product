@@ -1,11 +1,12 @@
+<div class = 'index'>
 <p style="color: green"><%= notice %></p>
 <div class='o-header'>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
   <p class="navbar-text float-right">
-  <% if user_signed_in? %>Logado como: <strong><%= current_user.email %></strong>.
-  <%= link_to "Editar Perfil", edit_user_registration_path, class: "navbar-link" %> |
-  <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "navbar-link"  %>
+  <% if user_signed_in? %>Acessando como: <strong><%= current_user.email %></strong><br>
+  <%= link_to "Editar Perfil", edit_user_registration_path %> 
+  <%= button_to "Sair", destroy_user_session_path, method: :delete  %>
   <% else %>
   <%= link_to "Criar conta", new_user_registration_path, class: "navbar-link"  %> |
   <%= link_to "Entrar", new_user_session_path, class: "navbar-link"  %>
@@ -54,6 +55,7 @@
       </table>
     </div>
   </main>
+</div>
 </div>
 <!--
 <%= link_to "New producao", new_producao_path %>

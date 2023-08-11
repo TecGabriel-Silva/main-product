@@ -16,8 +16,15 @@
 * {
 font-family: Arial, Helvetica, sans-serif;
 }
-
-body {
+.login{ 
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    border: 3px solid #9090ff;
+    padding: 10px;
+    background-color: #c8c8c8;
+}
+.index {
     display: grid;
     grid-gap: 1rem;
     grid-template-areas:
