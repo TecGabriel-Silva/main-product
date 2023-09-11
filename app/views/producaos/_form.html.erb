@@ -1,26 +1,16 @@
 <%= form_with(model: producao) do |form| %>
-  <% if producao.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(producao.errors.count, "error") %> prohibited this producao from being saved:</h2>
-      <ul>
-        <% producao.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 <div class='cadastro'>
   <div>
-    <%= form.label :Nome, style: "display: block" %>
+    <%= form.label :Nome%>
     <%= form.text_field :name %>
   </div>
   <div>
-    <%= form.label :Descrição, style: "display: block" %>
+    <%= form.label :Descrição, size: "10x10" %>
     <%= form.text_area :description %>
   </div>
   <div>
-    <%= form.label :Preço, style: "display: block" %>
-    <%= form.text_field :price %>
+    <%= form.label :Preço%>
+    <%= form.number_field :price%>
   </div>
     <br>
   <div>

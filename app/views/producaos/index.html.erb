@@ -1,85 +1,70 @@
-<p style="color: green"><%= notice %></p>
-<div class='o-header'>
-<h1>Cadastro de Produtos</h1>
-</div>
-<div class="o-aside">
-  <h1 style='text-align:center'>Cadastro</h1>
-  <div class='cadastro'>
-    <%= render "form", producao: @producao %>
+<!-- Vertically centered scrollable modal -->
+<div id="exampleModalToggle" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Produto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <%= render "form", producao: @producao %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sair</button>
+        <button type="button" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
   </div>
 </div>
-<div class="o-main">
-  <main>
-    <div id="producaos">
-      <h1 style='text-align:center'>Produtos</h1>
-      <table class="table">
-        <thead>
-          <tr>
-            <th><strong>Nome<strong></th>
-            <th><strong>Descrição<strong></th>
-            <th><strong>Preço<strong></th>
-            <th style='border:none'></th>
-            <th style='border:none'></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @producaos.each do |producao| %>
-          <tr>
-            <td><%= producao.name %></td>
-            <td><%= producao.description %></td>
-            <td><%= producao.price %></td>
-            <td style='border:none'><%= link_to "Editar", edit_producao_path(producao) %></td>
-            <td style='border:none'><%= button_to "Excluir", producao, method: :delete %></td>
-          </tr>
-          <% end %>
-        </tbody>  
-      </table>
+
+  <div class="container text-center">
+    <div class="row align-items-start">
+      <span class="alert"><%= alert %></span>
+      <span style="color: green"><strong><%= notice %></strong></span>
+      <span class="navbar-text float-right">
+      <% if user_signed_in? %>Acessando como: <strong><%= current_user.email %></strong><br>  
+      <%= link_to "Editar Perfil", edit_user_registration_path %> 
+      <%= button_to "Sair", destroy_user_session_path, method: :delete  %>
+      <% else %>
+      <%= link_to "Criar conta", new_user_registration_path, class: "navbar-link"  %>
+      <%= link_to "Entrar", new_user_session_path, class: "navbar-link"  %>
+      <% end %>
+      </span>
+  </div>
+</div>
+
+  <div class="row gx-5">
+    <div class="col">
+     <div class="p-2">
+      <h1>Cadastro de Produtos</h1>
+      <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Criar Produto</button>
     </div>
-  </main>
+    <div class="col">
+      <div class="p-3">
+        <h1>Lista de Produtos</h1>
+        <table class="table table-striped">
+          <thead>
+            <tr class="table-dark">
+              <th scope="col">NOME</th>
+              <th scope="col">DESCRIÇÃO</th>
+              <th scope="col">PREÇO</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @producaos.each do |producao| %>
+            <tr>
+              <th scope="row"><%= producao.name %></th>
+              <td><%= producao.description %></td>
+              <td><%= producao.price %></td>
+              <td><%= link_to "Editar", edit_producao_path(producao) %></td>
+              <td><%= button_to "Excluir", producao, method: :delete %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
-<!--
-<%= link_to "New producao", new_producao_path %>
-
-<div id="producaos">
-  <% @producaos.each do |producao| %>
-    <%= render producao %>
-      <%= link_to "Show this producao", producao %>
-    </p>
-  <% end %>
-</div>
-
-<h1>Producaos</h1>
-<div id="producaos">
-  <h1 style='text-align:center'>Produtos</h1>
-  <table class="table">
-    <thead>
-    <tr>
-            <th><strong>Nome<strong></th>
-            <th><strong>Descrição<strong></th>
-            <th><strong>Preço<strong></th>
-            <th style='border:none'></th>
-            <th style='border:none'></th>
-          </tr>
-        </thead>
-        <tbody>
-  <% @producaos.each do |producao| %>
-     <tr>
-            <td><%= producao.name %></td>
-            <td><%= producao.description %></td>
-            <td><%= producao.price %></td>
-            <td><%= link_to "Show this producao", producao %></td>
-            <td><%= button_to "Destroy this producao", @producao, method: :delete %></td>
-          </tr>
-  <% end %>
-</div>
-
-<%= link_to "New producao", new_producao_path %>
-<!--
-<div id="producaos">
-  <% @producaos.each do |producao| %>
-    <%= render producao %>
-      <%= link_to "Show this producao", producao %>
-    </p>
-  <% end %>
-</div>
-
