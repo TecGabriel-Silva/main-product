@@ -1,3 +1,12 @@
+<%= simple_form_for (@producao) do |f| %>
+  <%= f.input :name%>
+  <%= f.input :price%>
+  <%= f.input :description, input_html: { rows: 2 } %>
+<hr><br>
+  <%= link_to "Cancelar", producaos_path, class:"btn btn-danger"%>
+  <%= f.button :submit, "Salvar", class:"btn btn-success" %>
+<% end %>
+<!--
 <%= form_with(model: producao) do |form| %>
 <div class='cadastro'>
   <div>
@@ -19,3 +28,4 @@
 </div>
 
 <% end %>
+-->

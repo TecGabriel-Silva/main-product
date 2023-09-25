@@ -1,10 +1,15 @@
 class ProducaosController < ApplicationController
+  before_action :authenticate_user!, except: %i[]
   before_action :set_producao, only: %i[ show edit update destroy ]
 
   # GET /producaos or /producaos.json
   def index
-    @producaos = Producao.all
-    @producao = Producao.new
+    #@producaos = Producao.all
+    #Paginação dos produtos
+    
+    current_page = (params[:page] || 1).to_i
+    @producaos = Producao.page(current_page).per(3)
+    
   end
 
   # GET /producaos/1 or /producaos/1.json
@@ -26,8 +31,8 @@ class ProducaosController < ApplicationController
 
     respond_to do |format|
       if @producao.save
-        format.html { redirect_to producao_url(@producao), notice: "Producao was successfully created." }
-        format.json { render :show, status: :created, location: @producao }
+        format.html { redirect_to producao_url(@producao), notice: "Produto Criado com sucesso" }
+        format.json { render :index, status: :created, location: @producao }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @producao.errors, status: :unprocessable_entity }
@@ -39,7 +44,7 @@ class ProducaosController < ApplicationController
   def update
     respond_to do |format|
       if @producao.update(producao_params)
-        format.html { redirect_to producao_url(@producao), notice: "Producao was successfully updated." }
+        format.html { redirect_to producao_url(@producao), notice: "Produto Atualizado com sucesso" }
         format.json { render :show, status: :ok, location: @producao }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +58,7 @@ class ProducaosController < ApplicationController
     @producao.destroy
 
     respond_to do |format|
-      format.html { redirect_to producaos_url, notice: "Producao was successfully destroyed." }
+      format.html { redirect_to producaos_url, notice: "Produto Excluido com sucesso" }
       format.json { head :no_content }
     end
   end
