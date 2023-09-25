@@ -1,4 +1,16 @@
-<div class="container text-center">
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= f.input :email, autofocus: true%>
+  <%= f.input :password, label: 'Senha'%>
+<hr><br>
+  <%= f.button :submit, "Confirmar", class:"btn btn-success" %> <br><br>
+  <div class="btn-group-vertical ">
+    <%= render "devise/shared/links" %>
+  </div>
+<% end %>
+
+
+
+<!--<div class="container text-center">
   <div class="row align-items-start">
     <h2>Acesse sua conta</h2>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -6,6 +18,7 @@
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
+    
 
     <div class="field">
       <%= f.label :Senha %><br />
@@ -26,3 +39,4 @@
     <%= render "devise/shared/links" %>
   </div>
 </div>
+-->

@@ -1,6 +1,25 @@
 <h2>Cadastre-se</h2>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.input :email, autofocus: true %><br />
+  <%= f.input :password %>
+  <% if @minimum_password_length %>
+  <em>(<%= @minimum_password_length %> characters minimum)</em>
+  <% end %><br />
+  <%= f.input :password_confirmation %><br />
+  <div class="input-group mb-3">
+  <%= f.submit "Confirmar", class:"btn btn-primary" %>
+  <%= render "devise/shared/links" %>
+  </div>
+  <% end %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+
+
+
+
+
+
+<!--<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
@@ -25,5 +44,4 @@
     <%= f.submit "Confirmar" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
+-->

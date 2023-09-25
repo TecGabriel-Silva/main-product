@@ -1,4 +1,28 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Editar Dados da Conta</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.input :email, autofocus: true %>
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+  <div class="field">
+    <%= f.input :password, autocomplete: "new-password" %>
+    <%= f.input :password_confirmation, autocomplete: "new-password" %>
+    <%= f.input :current_password, autocomplete: "current-password" %>
+    <%= f.submit "Atualizar Dados", class:"btn btn-primary" %>
+<% end %>
+<hr>
+<h3>Cancelar minha Conta</h3>
+<div> <%= button_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn btn-danger" %></div><br>
+<hr>
+<%= link_to "Back", :back, class:"btn btn-primary" %>
+
+
+
+
+
+<!--
+<h2>Editar Dados da Conta <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -41,3 +65,4 @@
 <div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
 
 <%= link_to "Back", :back %>
+-->
