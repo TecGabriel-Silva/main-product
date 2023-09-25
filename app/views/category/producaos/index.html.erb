@@ -1,0 +1,29 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Produtos da categoria: <%= @category.name %></h1>
+
+<td><%= link_to "Criar novo produto", new_category_producao_path(@category), class:"btn btn-dark" %></td>
+
+<div id="categories">
+      <table class="table">
+        <thead>
+          <tr>
+            <th><strong>Nome<strong></th>
+            <th><strong>Descrição<strong></th>
+            <th><strong>Preço<strong></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <% @category.producaos.each do |producao| %>
+          <tr>
+            <td><strong><%= producao.name %></strong></td>
+            <td><%= producao.description %></td>
+            <td>&#36;<%= producao.price %></td>
+          </tr>
+          <% end %>
+        </tbody>  
+      </table>
+</div>
+

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  resources :categories do 
+    resources :producaos, controller: 'category/producaos'
+  end
+
   devise_for :users
-  resources :producaos
+  # resources :producaos
   #root :to => "producaos#index"
   root 'producaos#index' 
   

@@ -1,0 +1,24 @@
+
+<%= form_with(model: producao, url: category_producaos_path(@category)) do |form| %>
+<div class='cadastro'>
+
+<%= form.hidden_field :category_id %>
+  <div>
+    <%= form.label :Nome%>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :Descrição, size: "10x10" %>
+    <%= form.text_area :description %>
+  </div>
+  <div>
+    <%= form.label :Preço%>
+    <%= form.number_field :price%>
+  </div>
+    <br>
+  <div>
+    <%= form.submit "Novo Produto"%>
+  </div>
+</div>
+
+<% end %>
